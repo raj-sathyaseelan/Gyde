@@ -1,8 +1,8 @@
-package helloworld
+package com.gyde
 
 class KeyValue {
 	
-	String Key
+	String KeyID
 	String Value
 	
 }
