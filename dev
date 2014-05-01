@@ -1,0 +1,8 @@
+alter table quote drop foreign key FK66F3E7CAF485168;
+drop table if exists book;
+drop table if exists person;
+drop table if exists quote;
+create table book (id bigint not null auto_increment, version bigint not null, author_name varchar(255) not null, name varchar(255) not null, primary key (id)) ENGINE=InnoDB;
+create table person (id bigint not null auto_increment, version bigint not null, age integer not null, sex varchar(255) not null, primary key (id)) ENGINE=InnoDB;
+create table quote (id bigint not null auto_increment, version bigint not null, person_id bigint not null, unique_id bigint not null, primary key (id)) ENGINE=InnoDB;
+alter table quote add index FK66F3E7CAF485168 (person_id), add constraint FK66F3E7CAF485168 foreign key (person_id) references person (id);
