@@ -24,26 +24,20 @@
 <%--	Age: <g:fieldValue bean="${person}" field="age"/><br/>--%>
 <%--	-->--%>
 
-    <!-- Multiple Radios -->
-    
+    <!-- Multiple checkbox -->
+       
     <div class="control-group">
-      <label class="control-label" for="radios-user-priorities">Select all that apply</label>
-      <div class="controls">
-        
-          <label class="checkbox" >
-          <g:checkBox name="checkbox-user-priorities" id="checkbox-user-priorities" value="on" checked="true"/>
-          Save money
-          </label>
-          
-          <label class="checkbox" >
-          <g:checkBox name="checkbox-user-priorities" id="checkbox-user-priorities" value="Better coverage" checked="false"/>
-          Better coverage
-          </label>
-        
-          <label class="checkbox">
-          <g:checkBox name="checkbox-user-priorities" id="checkbox-user-priorities" value="Specific Doctor" checked="false"/>
-          Specific Doctor
-          </label>
+      <label class="control-label" for="$[all-user-priorities]">Select all that apply</label>
+      
+		<div class="controls">
+		
+	    <g:each var="priority" in="${priorities}">
+    	
+			<label class="checkbox" >
+			   <g:checkBox name="${priority.keyID}" id="${priority.keyID}" value="${priority.value}" checked="false"/>
+			   ${priority.value}
+			</label>
+		</g:each>
           
       </div>
       

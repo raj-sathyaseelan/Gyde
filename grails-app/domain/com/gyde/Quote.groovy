@@ -6,8 +6,7 @@ class Quote {
 	Priority[] priorities
 	HealthSituation[] healthSituations
 	
-	//static hasManyPriorities = [priorities: Priority]
-	//static hasManyHealthSituations = [healthSituations: HealthSituation]
+	static hasMany = [Priority, HealthSituation]
 	
 	static constraints = {
 		createTime(nullable: false)

@@ -1,30 +1,34 @@
 package com.gyde
-
+	
 class PriorityController {
+	
+	Quote newQuote;
 
     def index() { 
 		//render "Hello World"
 		//Person person = new Person(firstName: 'John', lastName:'Doe', age:55)
 		
-		Date currentDate = new Date()
-		Quote newQuote = new Quote(createTime:currentDate).save()		
+		def criteria = 'checkbox-user-priorities'
 		
+		// GORM Where plus execute in one action
+		def prioritiesQuery = KeyValue.where {
+			keyID == criteria
+		}
+				
+		[priorities: prioritiesQuery.list()]
 	}
 	
 	def next() {
-		def priorityIds = params.list('checkbox-user-priorities')
+		def priorities = params.list('checkbox-user-priorities')
+		Date currentDate = new Date()
+		newQuote = new Quote(createTime:currentDate).save()
 		
-		render priorityIds
+		for (priority in priorities ) { 
+			
+			Priority newPriority = new Priority(priority: priority, quote: newQuote).save()
+		};
 		
-		//Priority newPriority = new Priority()
-		
-		//Person person = new Person(sex:'M', age:'35').save()
-		//[ person:person ]
-		//redirect(healths)
-	}
-	
-	def hi() {
-		render "how are you?"
+		redirect(controller: 'HealthSituation', action: 'index', params: params)
 	}
 	
 }

@@ -2,7 +2,7 @@ package com.gyde
 
 class KeyValue {
 	
-	String KeyID
-	String Value
+	String keyID
+	String value
 	
 }
