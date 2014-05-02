@@ -3,15 +3,11 @@ package com.gyde
 class Quote {
 	
 	Date createTime
-	Priority[] priorities
-	HealthSituation[] healthSituations
-	
-	static hasMany = [Priority, HealthSituation]
+
+	static hasMany = [prorities: Priority, healthSituations: HealthSituation]
 	
 	static constraints = {
 		createTime(nullable: false)
-		priorities(nullable: true)
-		healthSituations(nullable: true)
 	}
 	
 	def String toString() {

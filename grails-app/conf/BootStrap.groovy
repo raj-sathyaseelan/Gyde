@@ -13,6 +13,7 @@ class BootStrap {
 			new KeyValue (keyID: 'checkbox-user-priorities', value: 'Specific Doctor').save(failOnError: true)
 			
 			//healthsituation/index.gsp
+			new KeyValue (keyID: 'checkbox-healthsituations', value: 'I am healthy').save(failOnError: true)
 			new KeyValue (keyID: 'checkbox-healthsituations', value: 'Breast Cancer' ).save(failOnError: true)
 			new KeyValue (keyID: 'checkbox-healthsituations', value: 'Lung Cancer').save(failOnError: true)
 			new KeyValue (keyID: 'checkbox-healthsituations', value: 'Prostate Cancer').save(failOnError: true)

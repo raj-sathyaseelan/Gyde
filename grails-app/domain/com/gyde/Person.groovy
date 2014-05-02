@@ -6,17 +6,16 @@ class Person {
 	String email
     int age
 	
-	static belongsToQuote = [quote: Quote]
+	String toString() {
+		"${email}"
+	}
+
+	static belongsTo = [quote: Quote]
 	
 	static constraints = {
-		sex(blank: false, , size: 2..2)
+		sex(blank: false, , size: 1..1, inList: ["M", "F"])
 		age(blank: false, size: 1..3, validator: {val, obj -> val?.isNumber()})
 		email(blank: false)
-		
-		/*moveInDate(nullable: false, max:  new Date())
-		moveOutDate(nullable: true, validator: { val, obj ->
-			val?.after(obj.moveInDate)
-		})*/
 	}
 	
 }

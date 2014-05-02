@@ -23,12 +23,14 @@ class PriorityController {
 		Date currentDate = new Date()
 		newQuote = new Quote(createTime:currentDate).save()
 		
-		for (priority in priorities ) { 
-			
-			Priority newPriority = new Priority(priority: priority, quote: newQuote).save()
-		};
 		
-		redirect(controller: 'HealthSituation', action: 'index', params: params)
+		for (priorityItem in priorities ) { 
+			
+			Priority newPriority = new Priority(priorityName: priorityItem, quote: newQuote)
+			newPriority.save(failOnError: true)
+		}
+	
+		redirect(controller: 'HealthSituation', action: 'index', params: [quote_id: newQuote.id ])
 	}
 	
 }

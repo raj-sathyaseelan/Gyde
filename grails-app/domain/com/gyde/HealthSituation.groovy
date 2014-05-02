@@ -2,7 +2,11 @@ package com.gyde
 
 class HealthSituation {
 	
-	Diseases diseases;
+	String healthSituationName;
 	static belongsTo = [quote: Quote]
+	
+	static constraints = {
+		healthSituationName (blank: false)
+	}
 
 }

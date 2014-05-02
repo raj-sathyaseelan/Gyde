@@ -1,8 +1,6 @@
 package com.gyde
 
 class HealthSituationController {
-
-	Quote quote
 	
 	def index() {		
 		def criteria = 'checkbox-healthsituations'
@@ -19,14 +17,13 @@ class HealthSituationController {
 	def next() {
 		def healthSituations = params.list('checkbox-healthsituations')
 		
-		quote = params.list.('quote').get(0)
+		def quote_id_value = params["quote_id"]
 		
 		for (healthSituationItem in healthSituations ) {
-			
-			HealthSituation healthSituation = new HealthSituation(disease: healthSituationItem, quote: quote).save()
-		};
+			new HealthSituation(healthSituationName: healthSituationItem, quote:  Quote.get(quote_id) ).save()
+		}
 		
-		redirect(controller: 'Personal', action: 'index', params: params)
+		redirect(controller: 'Person', action: 'index', params: [quote_id: quote_id_value ])
 	}
 	
 }
