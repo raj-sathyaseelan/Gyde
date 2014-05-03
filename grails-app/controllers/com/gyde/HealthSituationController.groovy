@@ -17,13 +17,14 @@ class HealthSituationController {
 	def next() {
 		def healthSituations = params.list('checkbox-healthsituations')
 		
-		def quote_id_value = params["quote_id"]
-		
+		println ("params " + params)
+		def quote_id = params["quote_id"]
+				
 		for (healthSituationItem in healthSituations ) {
 			new HealthSituation(healthSituationName: healthSituationItem, quote:  Quote.get(quote_id) ).save()
 		}
 		
-		redirect(controller: 'Person', action: 'index', params: [quote_id: quote_id_value ])
+		redirect(controller: 'Personal', action: 'index', params: [quote_id: quote_id ])
 	}
 	
 }
