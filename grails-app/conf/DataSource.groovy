@@ -1,9 +1,11 @@
-ataSource {
+dataSource {
 	pooled = true
 	//dbCreate = "update"
 	driverClassName = "com.mysql.jdbc.Driver"
 	dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-
+	username = "root"
+	password = "password"
+	
 	properties {
 	   jmxEnabled = true
 	   initialSize = 5
@@ -51,8 +53,6 @@ environments {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
 			url = "jdbc:mysql://localhost:3306/firefly_health"
-			username = "root"
-			password = "password"
         }
     }
     test {
@@ -90,5 +90,5 @@ environments {
         }
 
     }
-
+	
 }

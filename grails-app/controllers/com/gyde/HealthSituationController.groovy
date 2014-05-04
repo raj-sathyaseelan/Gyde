@@ -19,9 +19,10 @@ class HealthSituationController {
 		
 		println ("params " + params)
 		def quote_id = params["quote_id"]
+		def quoteModel = Quote.get(quote_id)
 				
 		for (healthSituationItem in healthSituations ) {
-			new HealthSituation(healthSituationName: healthSituationItem, quote:  Quote.get(quote_id) ).save()
+			new HealthSituation(healthSituationName: healthSituationItem, quote: quoteModel  ).save()
 		}
 		
 		redirect(controller: 'Personal', action: 'index', params: [quote_id: quote_id ])
